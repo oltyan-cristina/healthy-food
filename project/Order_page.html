@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Website</title>
+    <link rel="stylesheet" href="Order_page_css.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <!--Order
+    
+    -->
+
+    <div class="order" id="Order">
+        <h1><span>Comandă</span>acum</h1>
+
+        <div class="order_main">
+
+            <div class="order_image">
+                <img src="image/order_image.png">
+            </div>
+
+            <form class="form_order"  method="post">
+
+                <div class="input">
+                    <p>Name</p>
+                    <input type="text" placeholder="Numele tău" id="nume" autocomplete="of" class="nume">
+                </div>
+
+                <div class="input">
+                    <p>Email</p>
+                    <input type="email" placeholder="Email" id="email" >
+                </div>
+
+                <div class="input">
+                    <p>Number</p>
+                    <textarea id="message1" placeholder="Număr de telefon"></textarea>
+                </div>
+
+
+                <div class="input">
+                    <p>Adresă</p>
+                    <textarea id="message2" placeholder="Adresa"></textarea>
+                </div>
+
+                <button type="submit" id="btn" class="order_btn">Plasează comanda</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    
+</body>
+<script src="https://smtpjs.com/v3/smtp.js">
+</script>
+<script>
+
+    var btn= document.getElementById('btn');
+    btn.addEventListener('click', function (e){
+        e.preventDefault()
+        var nume = document.getElementById('nume').value;
+        var email = document.getElementById('email').value;
+        var mess1 = document.getElementById('message1').value;
+        var mess2 = document.getElementById('message2').value;
+        var body = '<b/> Mail de confirmare comandă' + ' <br/> Datele de comandă sunt: '  +'<br/>  Nume: ' + nume +  '<br/> Nr telefon: ' + mess1 + '<br/> Adresa: ' + mess2 
+
+        Email.send({
+    SecureToken : "5a1f29cf-bed5-46d3-8e79-4ce98935179a",
+    To : email,
+    From : 'oltyan.cristina07@gmail.com',
+    Subject : "Comandă",
+    Body : body
+}).then(
+  message => alert(message)
+);
+
+
+
+    })
+
+
+
+
+</script>
+</html>
